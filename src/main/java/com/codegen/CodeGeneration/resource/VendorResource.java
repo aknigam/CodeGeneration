@@ -38,7 +38,7 @@ public class VendorResource {
     @Path("/{vendorId}")
     public Response updateVendor(@PathParam("vendorId") int vendorId, Vendor vendor){
         vendor.setId(vendorId);
-        return Response.ok(vendorService.update(vendor)).build();
+        return Response.ok(vendorService.update(vendorId, vendor)).build();
     }
 
     @GET
