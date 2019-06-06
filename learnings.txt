@@ -1,0 +1,7 @@
+
+
+
+https://www.baeldung.com/jersey-bean-validation
+
+https://www.baeldung.com/javax-validation
+

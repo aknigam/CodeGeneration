@@ -1,0 +1,25 @@
+- Add a flag to mark a field non-updateable
+
+- add exception handler at the resource level so that custom http error code can be sent along with the relevant information
+
+-- NOT enough HTTP error codes
+https://medium.com/@suhas_chatekar/return-well-formed-error-responses-from-your-rest-apis-956b5275948
+https://dzone.com/articles/when-http-status-codes-are-not-enough-tackling-web
+
+- https://stackoverflow.com/questions/17928799/how-to-implement-batch-operations-with-mybatis-spring
+https://www.baeldung.com/jdbc-batch-processing
+
+http://www.mybatis.org/spring/boot.html
+
+http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/
+
+https://learning.oreilly.com/library/view/java-persistence-with/9781782166801/ch05.html
+
+
+
+- link/unlink operations are always required in the repository layer
+
+
+- one to many entoties should havw the reference to parent
+
+- oneToMany not supported with master reference

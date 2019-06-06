@@ -1,0 +1,49 @@
+
+# Documentation link: https://docs.spring.io/spring-boot/docs/1.5.12.RELEASE/reference/html/boot-features-logging.html
+#
+# you can also specify debug=true in your application.properties.
+# debug=true
+# Set this system property to completely disable spring boot logging -Dorg.springframework.boot.logging.LoggingSystem=none
+# As a convention spring by default pics the logback-spring.xml file from classpath of Logback logging system is
+# configured using above property
+# if logback-spring.xml is present in the classpath then it is automatically picked
+logging:
+  level:
+    org.springframework.security: INFO
+    root: INFO
+#  config: "src/main/resources/logback-spring.xml"
+  file: "edukan.log"
+
+server:
+  port: 8080
+
+local:
+  server:
+    port: 8090
+
+
+#jmx properties
+jmx:
+  config:
+    username: "admin"
+    password: "admin"
+
+
+database:
+  config:
+    driver: "com.mysql.jdbc.Driver"
+    url: "jdbc:mysql://localhost:3306/edukan"
+    username: "root"
+    password: "root"
+    initialSize: 10
+    maxActive: 50
+    maxWait: 1000
+
+mybatis:
+  executor-type: batch
+
+#https://stackoverflow.com/questions/50231736/applicationcontextexception-unable-to-start-servletwebserverapplicationcontext
+
+
+
+
