@@ -19,7 +19,10 @@ public class DeliveryAgentRepositoryImpl implements DeliveryAgentRepository {
     @Override
     public DeliveryAgent update(int deliveryAgentId, DeliveryAgent deliveryAgent) {
         try {
-            return deliveryAgentMapper.update(deliveryAgentId, deliveryAgent);
+            deliveryAgent.setId(deliveryAgentId);
+            deliveryAgentMapper.update(deliveryAgentId, deliveryAgent);
+
+            return deliveryAgentMapper.get(deliveryAgentId);
         }
         catch (DataIntegrityViolationException dive) {
         //             this exception occurs if the length of the field is more than required.
@@ -30,6 +33,7 @@ public class DeliveryAgentRepositoryImpl implements DeliveryAgentRepository {
             throw e;
         }
     }
+
 
     @Override
     public DeliveryAgent get(int deliveryAgentId) {

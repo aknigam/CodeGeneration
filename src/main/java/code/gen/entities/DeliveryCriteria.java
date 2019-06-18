@@ -1,11 +1,7 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.String;
+import java.util.Map;
 
 public enum DeliveryCriteria {
 
@@ -27,7 +23,7 @@ this.description = description;
 idToDeliveryCriteria.put(deliveryCriteria.getId(), deliveryCriteria);
 
 	}
-	public static DeliveryCriteria fromId( Integer id) {
+	public static DeliveryCriteria fromId(Integer id) {
 return idToDeliveryCriteria.get(id);
 	}
 

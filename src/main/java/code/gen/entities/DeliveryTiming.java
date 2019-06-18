@@ -1,10 +1,6 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.lang.Integer;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class DeliveryTiming {
@@ -13,8 +9,10 @@ public class DeliveryTiming {
 
     private Integer id;
 
+    @NotNull(message = "DeliveryTiming - startTime cannot be null ")
     private Date startTime;
 
+    @NotNull(message = "DeliveryTiming - endTime cannot be null ")
     private Date endTime;
 
 

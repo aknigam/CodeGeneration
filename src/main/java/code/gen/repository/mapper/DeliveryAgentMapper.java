@@ -8,13 +8,13 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface DeliveryAgentMapper {
 
-    @Update(" UPDATE vendor_delivery_agent" + 
+    @Update(" UPDATE delivery_agent" + 
 		" SET first_name = #{deliveryAgent.firstName}, last_name = #{deliveryAgent.lastName}" + 
 		" WHERE (id = #{deliveryAgentId})")
-    DeliveryAgent update(@Param("deliveryAgentId") int deliveryAgentId, @Param("deliveryAgent") DeliveryAgent deliveryAgent);
+    void update(@Param("deliveryAgentId") int deliveryAgentId, @Param("deliveryAgent") DeliveryAgent deliveryAgent);
 
     @Select(" SELECT id, first_name, last_name" + 
-		" FROM vendor_delivery_agent" + 
+		" FROM delivery_agent" + 
 		" WHERE (id = #{deliveryAgentId})")
     @Results({
 		 @Result(column = "id", property = "id"),
@@ -23,12 +23,13 @@ public interface DeliveryAgentMapper {
 	})
     DeliveryAgent get(@Param("deliveryAgentId") int deliveryAgentId);
 
-    @Insert(" INSERT INTO vendor_delivery_agent" + 
+    @Insert(" INSERT INTO delivery_agent" + 
 		"  (first_name, last_name)" + 
 		" VALUES (#{deliveryAgent.firstName}, #{deliveryAgent.lastName})")
+    @Options(useGeneratedKeys=true, keyProperty="deliveryAgent.id")
     void create(@Param("deliveryAgent") DeliveryAgent deliveryAgent);
 
-    @Delete(" DELETE FROM vendor_delivery_agent" + 
+    @Delete(" DELETE FROM delivery_agent" + 
 		" WHERE (id = #{deliveryAgentId})")
     void delete(@Param("deliveryAgentId") int deliveryAgentId);
 

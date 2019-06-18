@@ -1,10 +1,7 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
+import java.util.Map;
 
 public enum VendorStatus {
 
@@ -25,7 +22,7 @@ this.statusName = statusName;
 idToVendorStatus.put(vendorStatus.getId(), vendorStatus);
 
 	}
-	public static VendorStatus fromId( Integer id) {
+	public static VendorStatus fromId(Integer id) {
 return idToVendorStatus.get(id);
 	}
 

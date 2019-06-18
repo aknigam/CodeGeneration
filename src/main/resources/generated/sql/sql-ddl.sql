@@ -3,14 +3,9 @@ CREATE TABLE vendor
     id int unsigned PRIMARY KEY AUTO_INCREMENT,
     code varchar(50)  ,
     name varchar(10) NOT NULL ,
-    email varchar(10) NOT NULL ,
+    email varchar(10)  ,
     owner int unsigned NOT NULL ,
-    mobile_number int(10) unsigned NOT NULL ,
-    shop_address int unsigned  ,
-    geo_location int unsigned  ,
-    delivery_criteria int unsigned  ,
-    tax_details int unsigned  ,
-    vendor_status int unsigned  
+    shop_address int unsigned  
 );
 
 
@@ -38,8 +33,7 @@ CREATE TABLE tax_details
 CREATE TABLE android_app_detail
 (
     id int unsigned PRIMARY KEY AUTO_INCREMENT,
-    android_token varchar(250)  ,
-    vendor_id int unsigned  
+    android_token varchar(250)  
 );
 
 
@@ -58,14 +52,6 @@ CREATE TABLE delivery_agent
 );
 
 
-CREATE TABLE vendor_delivery_agent
-(
-    id int unsigned PRIMARY KEY AUTO_INCREMENT,
-    vendor_id int unsigned  ,
-    delivery_agent_id int unsigned  
-);
-
-
 CREATE TABLE person
 (
     id int unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -73,15 +59,14 @@ CREATE TABLE person
     last_name varchar(10)  ,
     middle_name varchar(10)  ,
     mobile_number int(10) unsigned  ,
-    email varchar(10)  
+    email varchar(10) NOT NULL 
 );
 
 
 CREATE TABLE delivery_area
 (
     id int unsigned PRIMARY KEY AUTO_INCREMENT,
-    pin_code int unsigned NOT NULL ,
-    vendor_id int unsigned  
+    pin_code int unsigned NOT NULL 
 );
 
 
@@ -96,8 +81,7 @@ CREATE TABLE delivery_timing
 (
     id int unsigned PRIMARY KEY AUTO_INCREMENT,
     start_time DATETIME NOT NULL ,
-    end_time DATETIME NOT NULL ,
-    vendor_id int unsigned  
+    end_time DATETIME NOT NULL 
 );
 
 
@@ -106,14 +90,6 @@ CREATE TABLE payment_option
     id int unsigned PRIMARY KEY AUTO_INCREMENT,
     name varchar(10)  ,
     description varchar(250)  
-);
-
-
-CREATE TABLE vendor_payment_option
-(
-    id int unsigned PRIMARY KEY AUTO_INCREMENT,
-    vendor_id int unsigned  ,
-    payment_option_id int unsigned  
 );
 
 

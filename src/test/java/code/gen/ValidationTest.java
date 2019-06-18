@@ -28,10 +28,10 @@ public class ValidationTest {
     private static Vendor getDummyVendor() {
         Vendor v = new Vendor();
         Person p = new Person();
-        p.setEmail("b@b.com");
-        p.setFirstName("a");
-        p.setLastName("a");
-        v.setOwner(p);
+//        p.setEmail("b@b.com");
+//        p.setFirstName("a");
+//        p.setLastName("a");
+//        v.setOwner(p);
         v.setEmail("v@b.com");
         v.setCode("vc1");
         v.setName("vname");

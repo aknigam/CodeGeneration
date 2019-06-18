@@ -5,3 +5,12 @@ https://www.baeldung.com/jersey-bean-validation
 
 https://www.baeldung.com/javax-validation
 
+JERSEY CLASSES useful for troubleshooting
+------------------------------------------
+ServletContainer
+WebComponent.serviceImpl
+
+MethodSelectingRouter.getMethodRouter
+	List<MethodSelectingRouter.ConsumesProducesAcceptor> acceptors = (List)this.consumesProducesAcceptors.get(request.getMethod());
+
+putting @NotNull annotation on the path param may not work if the url becomes ambiguous

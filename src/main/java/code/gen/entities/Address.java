@@ -1,17 +1,5 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.String;
-import java.lang.String;
-import java.lang.String;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.String;
-
 public class Address {
 
     public Address() {}
@@ -28,9 +16,9 @@ public class Address {
 
     private Integer pinCode;
 
-    private String State;
+    private String state;
 
-    private String Country;
+    private String country;
 
 
     public Integer getId() {
@@ -76,17 +64,17 @@ public class Address {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
-    public void setState(String State) {
-        this.State = State;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
-    public void setCountry(String Country) {
-        this.Country = Country;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }

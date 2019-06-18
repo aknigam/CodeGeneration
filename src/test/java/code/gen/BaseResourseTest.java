@@ -5,6 +5,7 @@ import code.gen.clients.VendorClient;
 import code.gen.entities.Vendor;
 import com.google.gson.GsonBuilder;
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,12 +23,11 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import test.framework.ServerResponse;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /*
 Refer: https://spring.io/guides/gs/testing-web/
@@ -61,7 +61,7 @@ public class BaseResourseTest {
 
     }
 
-    private Retrofit getRetrofitBuilder() {
+    protected Retrofit getRetrofitBuilder() {
 
         GsonConverterFactory gson =  GsonConverterFactory.create(new GsonBuilder().setDateFormat
                 ("yyyy-MM-dd'T'HH:mm:ss")
@@ -74,8 +74,8 @@ public class BaseResourseTest {
                 .addConverterFactory(gson)
                 .build();
     }
-    private static final int CONNECT_TIMEOUT_MILLISECONDS = 5 * 1000; // 5s
-    private static final int READ_TIMEOUT_MILLISECONDS = 5 * 1000; // 5s
+    private static final int CONNECT_TIMEOUT_MILLISECONDS = 60 * 1000; // 5s
+    private static final int READ_TIMEOUT_MILLISECONDS = 15 * 1000; // 5s
 
     @NonNull
     private OkHttpClient.Builder getBuilder() {
@@ -111,15 +111,59 @@ public class BaseResourseTest {
 
 
     protected Vendor getVendorById(int vendorId) {
-        VendorApi api =  retrofit.create(VendorApi.class);
-        Call<Vendor> resp = api.getVendor(vendorId);
+        return getServerResponse(vendorApi.getVendor(vendorId));
+
+    }
+
+    protected <E> ServerResponse<E> getResult(Call<E> call) {
+        ServerResponse<E> serverResponse = new ServerResponse<>();
         try {
-            Response<Vendor> vendor = resp.execute();
-            return vendor.body();
+            Response<E> resp = call.execute();
+            if(resp.isSuccessful()) {
+                serverResponse.setSuccessful(true);
+                serverResponse.setEntity(resp.body());
+                return serverResponse;
+            }
+            else {
+                serverResponse.setSuccessful(false);
+                ResponseBody errorBody = resp.errorBody();
+                if (errorBody != null) {
+                    String error = errorBody.string();
+                    serverResponse.setError(error);
+                }
+                return serverResponse;
+            }
+
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("IOException occurred while communicating with server\n"+ e.getMessage());
+            serverResponse.setSuccessful(false);
+            serverResponse.setError("IOException occurred while communicating with server\n"+ e.getMessage());
+            return serverResponse;
+        }
+
+    }
+
+    @Deprecated
+    protected <E> E getServerResponse(Call<E> call) {
+        try {
+            Response<E> resp = call.execute();
+            if(resp.isSuccessful()) {
+                return resp.body();
+            }
+            else {
+                ResponseBody errorBody = resp.errorBody();
+                if (errorBody != null) {
+                    String error = errorBody.string();
+                    System.out.println("Server Error:\n" + error);
+                    return null;
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("IOException occurred while communicating with server\n"+ e.getMessage());
             return null;
         }
+        return null;
     }
 
     protected Vendor createVendor(Vendor vendor) {
@@ -129,9 +173,8 @@ public class BaseResourseTest {
             return resp.body();
         } catch (IOException e) {
             e.printStackTrace();
-
+            return null;
         }
-        return null;
     }
 
 

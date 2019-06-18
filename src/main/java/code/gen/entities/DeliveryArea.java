@@ -1,10 +1,6 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.Integer;
+import javax.validation.constraints.NotNull;
 
 public class DeliveryArea {
 
@@ -12,6 +8,7 @@ public class DeliveryArea {
 
     private Integer id;
 
+    @NotNull(message = "DeliveryArea - pinCode cannot be null ")
     private Integer pinCode;
 
 

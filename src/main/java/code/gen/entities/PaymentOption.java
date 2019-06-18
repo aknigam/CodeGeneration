@@ -1,11 +1,7 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.String;
+import java.util.Map;
 
 public enum PaymentOption {
 
@@ -27,7 +23,7 @@ this.description = description;
 idToPaymentOption.put(paymentOption.getId(), paymentOption);
 
 	}
-	public static PaymentOption fromId( Integer id) {
+	public static PaymentOption fromId(Integer id) {
 return idToPaymentOption.get(id);
 	}
 

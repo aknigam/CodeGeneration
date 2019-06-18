@@ -20,7 +20,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
+// NOT needed in case of Jersey
 @Component
 @Path("/service/v1/deliveryAgents")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -34,13 +37,16 @@ public class DeliveryAgentResource {
     }
 
     @POST
-    public Response createDeliveryAgent(DeliveryAgent deliveryAgent){
+    public Response createDeliveryAgent(
+            @NotNull(message = "DeliveryAgent is required") @Valid DeliveryAgent deliveryAgent)
+    {
         return Response.ok(deliveryAgentService.create(deliveryAgent)).build();
     }
 
     @PUT
     @Path("/{deliveryAgentId}")
-    public Response updateDeliveryAgent(@PathParam("deliveryAgentId") int deliveryAgentId, DeliveryAgent deliveryAgent){
+    public Response updateDeliveryAgent(@PathParam("deliveryAgentId") int deliveryAgentId,
+            @NotNull(message = "DeliveryAgent is required for update") @Valid DeliveryAgent deliveryAgent){
         deliveryAgent.setId(deliveryAgentId);
         return Response.ok(deliveryAgentService.update(deliveryAgentId,  deliveryAgent)).build();
     }

@@ -1,11 +1,6 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.String;
+import javax.validation.constraints.NotNull;
 
 public class DeliveryAgent {
 
@@ -13,8 +8,10 @@ public class DeliveryAgent {
 
     private Integer id;
 
+    @NotNull(message = "DeliveryAgent - firstName cannot be null ")
     private String firstName;
 
+    @NotNull(message = "DeliveryAgent - lastName cannot be null ")
     private String lastName;
 
 

@@ -1,11 +1,5 @@
 package code.gen.entities;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
-
 public class AndroidAppDetail {
 
     public AndroidAppDetail() {}

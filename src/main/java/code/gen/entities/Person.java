@@ -1,15 +1,6 @@
 package code.gen.entities;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.String;
-import java.lang.String;
-import java.lang.Integer;
-import java.lang.String;
 
 public class Person {
 
@@ -17,18 +8,15 @@ public class Person {
 
     private Integer id;
 
-    @NotNull(message = "First name cannot be null")
     private String firstName;
 
-    @NotNull(message = "Last name cannot be null")
     private String lastName;
 
     private String middleName;
 
-    @NotNull(message = "Person mobile number cannot be null")
     private Integer mobileNumber;
 
-    @NotNull(message = "Email cannot be null")
+    @NotNull(message = "Person - email cannot be null ")
     private String email;
 
 
